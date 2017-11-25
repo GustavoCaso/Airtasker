@@ -20,31 +20,7 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
-class RedisStub
-  def initialize
-    @atoms = {}
-  end
-
-  def get(key)
-    @atoms[key]
-  end
-
-  def expire(key, time)
-    nil
-  end
-
-  def set(key, value)
-    @atoms[key.to_s] = value
-    'OK'
-  end
-
-  def incr(key)
-    @atoms[key.to_s] = @atoms[key.to_s] + 1
-  end
-end
-
-REDIS = RedisStub.new
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   # RSpec Rails can automatically mix in different behaviours to your tests

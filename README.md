@@ -1,24 +1,17 @@
-# README
+### Implement a rate limit solution
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Implemnt a rate limit solution for a Rails application.
 
-Things you may want to cover:
+The target of the solution is at the controller level.
 
-* Ruby version
+You can register as many Throttling rules as you need, and you can apply them to any route required.
 
-* System dependencies
+Added a Throttle registry, a cache interface so you can use any store you want, for each throttle rule.
 
-* Configuration
+The cache interface is pretty simple it simple, it must respond to `write`, `read` and `increment`, optionally it can respond to `time_to_live` to return the number of seconds before it can access the application.
 
-* Database creation
+After looking for multiple solutions out there, I concluded that there multiple approaches to this problem, creating a Rack Middleware or implementing an in-house solution (this example).
 
-* Database initialization
+Both of solutions have benefits and limitations.
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

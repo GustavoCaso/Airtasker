@@ -14,4 +14,30 @@ After looking for multiple solutions out there, I concluded that there multiple 
 
 Both of solutions have benefits and limitations.
 
+## Setup
 
+You need to have installed `redis`
+
+`$ brew install redis`
+
+To start the application, we need `redis` running in the backgrouond
+
+`$ redis-server`
+
+
+`$ bundle exec rails s`
+
+With this go to the root `http;//localhost:3000` you should see a `ok` in the page
+
+To force the rate limit to return a `429` status response and a message
+
+You can use:
+
+```
+for i in {1..100}
+do
+curl -i http://localhost:3000 >> /dev/null
+done
+```
+
+Then visiting the root again should appear a message we have hit our limit
